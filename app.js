@@ -3,61 +3,62 @@ const productos = [
         id: 1, 
         nombre: "Lomito Completo Cordobés", 
         precio: 8500, 
-        imagen: "https://images.unsplash.com/photo-1521305916504-4a1121188589?w=500&q=80" 
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/4/48/Sandwich_de_lomito.jpg" 
     },
     { 
         id: 2, 
         nombre: "Empanada Criolla (Unidad)", 
         precio: 1100, 
-        imagen: "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=500&q=80" 
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/a/a3/Empanada_salte%C3%B1a_2.jpg" 
     },
     { 
         id: 3, 
         nombre: "Pizza Especial de la Casa", 
         precio: 9800, 
-        imagen: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&q=80" 
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg" 
     },
     { 
         id: 4, 
         nombre: "Hamburguesa Doble con Queso", 
         precio: 7900, 
-        imagen: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&q=80" 
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/0/0b/RedDot_Burger.jpg" 
     },
     { 
         id: 5, 
         nombre: "Papas Cheddar y Bacon", 
         precio: 4500, 
-        imagen: "https://images.unsplash.com/photo-1576107232684-1279f3908594?w=500&q=80" 
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/6/67/Fries_2.jpg" 
     },
     { 
         id: 6, 
         nombre: "Cerveza Artesanal IPA 500ml", 
         precio: 3200, 
-        imagen: "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=500&q=80" 
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Glass_of_lager_beer.jpg" 
     },
     { 
         id: 7, 
         nombre: "Fernet preparado 750ml", 
         precio: 4200, 
-        imagen: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=500&q=80" 
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/3/3a/Fernet_con_coca.JPG" 
     },
     { 
         id: 8, 
         nombre: "Gaseosa Cola 500ml", 
         precio: 1800, 
-        imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500&q=80" 
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/c/cf/Full_glass_of_Coca-Cola_with_ice_cubes.jpg" 
     }
 ];
 
 let carrito = [];
 let medioPagoSeleccionado = "Mercado Pago";
-const NUMERO_WHATSAPP = "5493510000000"; // Poné tu número acá
+const NUMERO_WHATSAPP = "5493510000000"; // Poné tu número real acá
 
 const contenedorProductos = document.getElementById("contenedor-productos");
 const listaCarrito = document.getElementById("lista-carrito");
 const totalCarrito = document.getElementById("total");
 
 function renderizarProductos() {
+    if (!contenedorProductos) return;
     contenedorProductos.innerHTML = "";
     productos.forEach(producto => {
         const tarjeta = document.createElement("div");
@@ -100,6 +101,7 @@ function seleccionarMedioPago(metodo) {
 }
 
 function renderizarCarrito() {
+    if (!listaCarrito) return;
     listaCarrito.innerHTML = "";
 
     if (carrito.length === 0) {
@@ -108,11 +110,11 @@ function renderizarCarrito() {
         return;
     }
 
-    let total = 0;
+    let totalCalculado = 0;
 
     carrito.forEach(item => {
         const subtotal = item.precio * item.cantidad;
-        total += subtotal;
+        totalCalculado += subtotal;
 
         const divItem = document.createElement("div");
         divItem.classList.add("item-carrito");
@@ -131,26 +133,26 @@ function renderizarCarrito() {
         listaCarrito.appendChild(divItem);
     });
 
-    // Actualiza el total general en el DOM
+    // Actualizamos el elemento #total fuera del carrito y dentro
     if (totalCarrito) {
-        totalCarrito.innerText = `$${total.toLocaleString('es-AR')}`;
+        totalCarrito.innerText = `$${totalCalculado.toLocaleString('es-AR')}`;
     }
 
     // Opciones de Pago
     const divPago = document.createElement("div");
     divPago.classList.add("pago-seccion");
     divPago.innerHTML = `
-        <h4 style="margin: 15px 0 8px 0;">Medio de Pago:</h4>
-        <label class="pago-opcion" style="display:block; margin-bottom:5px;">
+        <h4 style="margin: 15px 0 8px 0; color:#cbd5e1;">Medio de Pago:</h4>
+        <label class="pago-opcion" style="display:block; margin-bottom:6px; cursor:pointer;">
             <input type="radio" name="pago" value="Mercado Pago" checked onclick="seleccionarMedioPago('Mercado Pago')"> Mercado Pago / Transferencia
         </label>
-        <label class="pago-opcion" style="display:block; margin-bottom:15px;">
+        <label class="pago-opcion" style="display:block; margin-bottom:15px; cursor:pointer;">
             <input type="radio" name="pago" value="Efectivo" onclick="seleccionarMedioPago('Efectivo')"> Efectivo al retirar/recibir
         </label>
     `;
     listaCarrito.appendChild(divPago);
 
-    // Botón PAGAR
+    // Botón verde de envío
     const btnPagar = document.createElement("button");
     btnPagar.classList.add("btn-pago");
     btnPagar.style.cssText = "display:block; width:100%; text-align:center; background:#22c55e; color:white; padding:14px; border-radius:8px; font-weight:bold; font-size:1.1rem; border:none; cursor:pointer; margin-top:10px;";
