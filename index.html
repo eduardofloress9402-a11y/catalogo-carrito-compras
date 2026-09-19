@@ -1,36 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catálogo & Carrito de Compras</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo & Carrito de Compras</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header>
-    <h1>Mi Tienda en Línea</h1>
-  </header>
+    <main class="contenedor-principal">
+        <section class="seccion-catalogo">
+            <h2>Catálogo de Productos</h2>
+            <div id="contenedor-productos" class="grid-productos"></div>
+        </section>
 
-  <main class="container">
-    <section class="productos-seccion">
-      <h2>Catálogo de Productos</h2>
-      <div id="contenedor-productos" class="grid-productos">
-        <!-- Se cargan dinámicamente -->
-      </div>
-    </section>
+        <aside class="seccion-carrito">
+            <h2>Carrito de Compras</h2>
+            <div id="lista-carrito"></div>
+            <div class="footer-carrito">
+                <h3 id="total">Total: $0</h3>
+            </div>
+        </aside>
+    </main>
 
-    <section class="carrito-seccion">
-      <h2>Carrito de Compras</h2>
-      <div id="lista-carrito">
-        <!-- Ítems del carrito -->
-      </div>
-      <div class="total-contenedor">
-        Total: $<span id="precio-total">0</span>
-      </div>
-    </section>
-  </main>
-
-  <script src="app.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
