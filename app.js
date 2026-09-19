@@ -1,53 +1,53 @@
 const productos = [
-    { 
-        id: 1, 
-        nombre: "Lomito Completo Cordobés", 
-        precio: 8500, 
-        imagen: "https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=400" 
-    },
-    { 
-        id: 2, 
-        nombre: "Empanada Criolla (Unidad)", 
-        precio: 1100, 
-        imagen: "https://images.pexels.com/photos/2983101/pexels-photo-2983101.jpeg?auto=compress&cs=tinysrgb&w=400" 
-    },
-    { 
-        id: 3, 
-        nombre: "Pizza Especial de la Casa", 
-        precio: 9800, 
-        imagen: "https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&w=400" 
-    },
-    { 
-        id: 4, 
-        nombre: "Hamburguesa Doble con Queso", 
-        precio: 7900, 
-        imagen: "https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=400" 
-    },
-    { 
-        id: 5, 
-        nombre: "Papas Cheddar y Bacon", 
-        precio: 4500, 
-        imagen: "https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg?auto=compress&cs=tinysrgb&w=400" 
-    },
-    { 
-        id: 6, 
-        nombre: "Cerveza Artesanal IPA 500ml", 
-        precio: 3200, 
-        imagen: "https://images.pexels.com/photos/1552630/pexels-photo-1552630.jpeg?auto=compress&cs=tinysrgb&w=400" 
-    },
-    { 
-        id: 7, 
-        nombre: "Fernet preparado 750ml", 
-        precio: 4200, 
-        imagen: "https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&w=400" 
-    },
-    { 
-        id: 8, 
-        nombre: "Gaseosa Cola 500ml", 
-        precio: 1800, 
-        imagen: "https://images.pexels.com/photos/50593/coca-cola-cold-drink-soft-drink-coke-50593.jpeg?auto=compress&cs=tinysrgb&w=400" 
-    }
-];
+            { 
+                id: 1, 
+                nombre: "Lomito Completo Cordobés", 
+                precio: 8500, 
+                imagen: "https://images.pexels.com/photos/1603901/pexels-photo-1603901.jpeg?auto=compress&cs=tinysrgb&w=400" 
+            },
+            { 
+                id: 2, 
+                nombre: "Empanada Criolla (Unidad)", 
+                precio: 1100, 
+                imagen: "https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg?auto=compress&cs=tinysrgb&w=400" 
+            },
+            { 
+                id: 3, 
+                nombre: "Pizza Especial de la Casa", 
+                precio: 9800, 
+                imagen: "https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&w=400" 
+            },
+            { 
+                id: 4, 
+                nombre: "Hamburguesa Doble con Queso", 
+                precio: 7900, 
+                imagen: "https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=400" 
+            },
+            { 
+                id: 5, 
+                nombre: "Papas Cheddar y Bacon", 
+                precio: 4500, 
+                imagen: "https://images.pexels.com/photos/1893556/pexels-photo-1893556.jpeg?auto=compress&cs=tinysrgb&w=400" 
+            },
+            { 
+                id: 6, 
+                nombre: "Cerveza Artesanal IPA 500ml", 
+                precio: 3200, 
+                imagen: "https://images.pexels.com/photos/1552630/pexels-photo-1552630.jpeg?auto=compress&cs=tinysrgb&w=400" 
+            },
+            { 
+                id: 7, 
+                nombre: "Fernet preparado 750ml", 
+                precio: 4200, 
+                imagen: "https://images.pexels.com/photos/5947019/pexels-photo-5947019.jpeg?auto=compress&cs=tinysrgb&w=400" 
+            },
+            { 
+                id: 8, 
+                nombre: "Gaseosa Cola 500ml", 
+                precio: 1800, 
+                imagen: "https://images.pexels.com/photos/50593/coca-cola-cold-drink-soft-drink-coke-50593.jpeg?auto=compress&cs=tinysrgb&w=400" 
+            }
+        ];
 
 let carrito = [];
 let medioPagoSeleccionado = "Mercado Pago";
