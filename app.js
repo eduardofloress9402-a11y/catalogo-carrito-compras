@@ -3,49 +3,49 @@ const productos = [
         id: 1, 
         nombre: "Lomito Completo Cordobés", 
         precio: 8500, 
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Lomito_completo.jpg/640px-Lomito_completo.jpg" 
+        imagen: "https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=400" 
     },
     { 
         id: 2, 
         nombre: "Empanada Criolla (Unidad)", 
         precio: 1100, 
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Empanada_salte%C3%B1a_2.jpg/640px-Empanada_salte%C3%B1a_2.jpg" 
+        imagen: "https://images.pexels.com/photos/2983101/pexels-photo-2983101.jpeg?auto=compress&cs=tinysrgb&w=400" 
     },
     { 
         id: 3, 
         nombre: "Pizza Especial de la Casa", 
         precio: 9800, 
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg/640px-Eq_it-na_pizza-margherita_sep2005_sml.jpg" 
+        imagen: "https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&w=400" 
     },
     { 
         id: 4, 
         nombre: "Hamburguesa Doble con Queso", 
         precio: 7900, 
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/RedDot_Burger.jpg/640px-RedDot_Burger.jpg" 
+        imagen: "https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=400" 
     },
     { 
         id: 5, 
         nombre: "Papas Cheddar y Bacon", 
         precio: 4500, 
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Fries_2.jpg/640px-Fries_2.jpg" 
+        imagen: "https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg?auto=compress&cs=tinysrgb&w=400" 
     },
     { 
         id: 6, 
         nombre: "Cerveza Artesanal IPA 500ml", 
         precio: 3200, 
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Glass_of_beer.jpg/640px-Glass_of_beer.jpg" 
+        imagen: "https://images.pexels.com/photos/1552630/pexels-photo-1552630.jpeg?auto=compress&cs=tinysrgb&w=400" 
     },
     { 
         id: 7, 
         nombre: "Fernet preparado 750ml", 
         precio: 4200, 
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Fernet_branca.jpg/640px-Fernet_branca.jpg" 
+        imagen: "https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&w=400" 
     },
     { 
         id: 8, 
         nombre: "Gaseosa Cola 500ml", 
         precio: 1800, 
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/A_glass_of_Coca-Cola_with_ice_cubes.jpg/640px-A_glass_of_Coca-Cola_with_ice_cubes.jpg" 
+        imagen: "https://images.pexels.com/photos/50593/coca-cola-cold-drink-soft-drink-coke-50593.jpeg?auto=compress&cs=tinysrgb&w=400" 
     }
 ];
 
@@ -64,7 +64,7 @@ function renderizarProductos() {
         const tarjeta = document.createElement("div");
         tarjeta.classList.add("producto-card");
         tarjeta.innerHTML = `
-            <img src="${producto.imagen}" alt="${producto.nombre}" onerror="this.onerror=null; this.src='https://dummyimage.com/300x200/334155/ffffff&text=Comida';">
+            <img src="${producto.imagen}" alt="${producto.nombre}">
             <h3>${producto.nombre}</h3>
             <p class="precio">$${producto.precio.toLocaleString('es-AR')}</p>
             <button class="btn-agregar" onclick="agregarAlCarrito(${producto.id})">Agregar al Carrito</button>
