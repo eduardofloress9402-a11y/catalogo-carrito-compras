@@ -3,59 +3,58 @@ const productos = [
         id: 1, 
         nombre: "Lomito Completo Cordobés", 
         precio: 8500, 
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/4/48/Sandwich_de_lomito.jpg" 
+        imagen: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=500&q=80" 
     },
     { 
         id: 2, 
         nombre: "Empanada Criolla (Unidad)", 
         precio: 1100, 
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/a/a3/Empanada_salte%C3%B1a_2.jpg" 
+        imagen: "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=500&q=80" 
     },
     { 
         id: 3, 
         nombre: "Pizza Especial de la Casa", 
         precio: 9800, 
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg" 
+        imagen: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=500&q=80" 
     },
     { 
         id: 4, 
         nombre: "Hamburguesa Doble con Queso", 
         precio: 7900, 
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/0/0b/RedDot_Burger.jpg" 
+        imagen: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=80" 
     },
     { 
         id: 5, 
         nombre: "Papas Cheddar y Bacon", 
         precio: 4500, 
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/6/67/Fries_2.jpg" 
+        imagen: "https://images.unsplash.com/photo-1576107232684-1279f3908594?auto=format&fit=crop&w=500&q=80" 
     },
     { 
         id: 6, 
         nombre: "Cerveza Artesanal IPA 500ml", 
         precio: 3200, 
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Glass_of_lager_beer.jpg" 
+        imagen: "https://images.unsplash.com/photo-1608270586620-248524c67de9?auto=format&fit=crop&w=500&q=80" 
     },
     { 
         id: 7, 
         nombre: "Fernet preparado 750ml", 
         precio: 4200, 
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/3/3a/Fernet_con_coca.JPG" 
+        imagen: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=500&q=80" 
     },
     { 
         id: 8, 
         nombre: "Gaseosa Cola 500ml", 
         precio: 1800, 
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/c/cf/Full_glass_of_Coca-Cola_with_ice_cubes.jpg" 
+        imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=500&q=80" 
     }
 ];
 
 let carrito = [];
 let medioPagoSeleccionado = "Mercado Pago";
-const NUMERO_WHATSAPP = "5493510000000"; // Poné tu número real acá
+const NUMERO_WHATSAPP = "5493510000000";
 
 const contenedorProductos = document.getElementById("contenedor-productos");
 const listaCarrito = document.getElementById("lista-carrito");
-const totalCarrito = document.getElementById("total");
 
 function renderizarProductos() {
     if (!contenedorProductos) return;
@@ -100,13 +99,21 @@ function seleccionarMedioPago(metodo) {
     medioPagoSeleccionado = metodo;
 }
 
+function actualizarTotalHTML(monto) {
+    // Busca cualquier elemento con ID total o clase que contenga el total
+    const elementoTotal = document.getElementById("total") || document.querySelector(".total") || document.querySelector("[id*='total']");
+    if (elementoTotal) {
+        elementoTotal.innerText = `Total: $${monto.toLocaleString('es-AR')}`;
+    }
+}
+
 function renderizarCarrito() {
     if (!listaCarrito) return;
     listaCarrito.innerHTML = "";
 
     if (carrito.length === 0) {
-        listaCarrito.innerHTML = "<p>El carrito está vacío.</p>";
-        if (totalCarrito) totalCarrito.innerText = "$0";
+        listaCarrito.innerHTML = "<p style='color:#94a3b8; padding: 10px 0;'>El carrito está vacío.</p>";
+        actualizarTotalHTML(0);
         return;
     }
 
@@ -121,24 +128,22 @@ function renderizarCarrito() {
         divItem.innerHTML = `
             <div class="item-info">
                 <strong>${item.nombre}</strong>
-                <span style="color:#94a3b8; font-size:0.85rem;">$${item.precio.toLocaleString('es-AR')} c/u</span>
+                <span style="color:#94a3b8; font-size:0.85rem; display:block;">$${item.precio.toLocaleString('es-AR')} c/u</span>
             </div>
-            <div class="item-controles">
+            <div class="item-controles" style="display:flex; align-items:center; gap:8px;">
                 <button class="btn-qty" onclick="cambiarCantidad(${item.id}, -1)">-</button>
                 <span>${item.cantidad}</span>
                 <button class="btn-qty" onclick="cambiarCantidad(${item.id}, 1)">+</button>
-                <strong style="margin-left:8px;">$${subtotal.toLocaleString('es-AR')}</strong>
+                <strong style="margin-left:auto;">$${subtotal.toLocaleString('es-AR')}</strong>
             </div>
         `;
         listaCarrito.appendChild(divItem);
     });
 
-    // Actualizamos el elemento #total fuera del carrito y dentro
-    if (totalCarrito) {
-        totalCarrito.innerText = `$${totalCalculado.toLocaleString('es-AR')}`;
-    }
+    // Forzamos actualización del total estático del HTML
+    actualizarTotalHTML(totalCalculado);
 
-    // Opciones de Pago
+    // Bloque Medio de Pago
     const divPago = document.createElement("div");
     divPago.classList.add("pago-seccion");
     divPago.innerHTML = `
@@ -152,7 +157,7 @@ function renderizarCarrito() {
     `;
     listaCarrito.appendChild(divPago);
 
-    // Botón verde de envío
+    // Botón de WhatsApp
     const btnPagar = document.createElement("button");
     btnPagar.classList.add("btn-pago");
     btnPagar.style.cssText = "display:block; width:100%; text-align:center; background:#22c55e; color:white; padding:14px; border-radius:8px; font-weight:bold; font-size:1.1rem; border:none; cursor:pointer; margin-top:10px;";
