@@ -3,49 +3,49 @@ const productos = [
         id: 1, 
         nombre: "Lomito Completo Cordobés", 
         precio: 8500, 
-        imagen: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=500&auto=format&fit=crop" 
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Lomito_completo.jpg/640px-Lomito_completo.jpg" 
     },
     { 
         id: 2, 
         nombre: "Empanada Criolla (Unidad)", 
         precio: 1100, 
-        imagen: "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=500&auto=format&fit=crop" 
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Empanada_salte%C3%B1a_2.jpg/640px-Empanada_salte%C3%B1a_2.jpg" 
     },
     { 
         id: 3, 
         nombre: "Pizza Especial de la Casa", 
         precio: 9800, 
-        imagen: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&auto=format&fit=crop" 
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg/640px-Eq_it-na_pizza-margherita_sep2005_sml.jpg" 
     },
     { 
         id: 4, 
         nombre: "Hamburguesa Doble con Queso", 
         precio: 7900, 
-        imagen: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&auto=format&fit=crop" 
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/RedDot_Burger.jpg/640px-RedDot_Burger.jpg" 
     },
     { 
         id: 5, 
         nombre: "Papas Cheddar y Bacon", 
         precio: 4500, 
-        imagen: "https://images.unsplash.com/photo-1576107232684-1279f3908594?w=500&auto=format&fit=crop" 
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Fries_2.jpg/640px-Fries_2.jpg" 
     },
     { 
         id: 6, 
         nombre: "Cerveza Artesanal IPA 500ml", 
         precio: 3200, 
-        imagen: "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=500&auto=format&fit=crop" 
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Glass_of_beer.jpg/640px-Glass_of_beer.jpg" 
     },
     { 
         id: 7, 
         nombre: "Fernet preparado 750ml", 
         precio: 4200, 
-        imagen: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=500&auto=format&fit=crop" 
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Fernet_branca.jpg/640px-Fernet_branca.jpg" 
     },
     { 
         id: 8, 
         nombre: "Gaseosa Cola 500ml", 
         precio: 1800, 
-        imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500&auto=format&fit=crop" 
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/A_glass_of_Coca-Cola_with_ice_cubes.jpg/640px-A_glass_of_Coca-Cola_with_ice_cubes.jpg" 
     }
 ];
 
@@ -64,7 +64,7 @@ function renderizarProductos() {
         const tarjeta = document.createElement("div");
         tarjeta.classList.add("producto-card");
         tarjeta.innerHTML = `
-            <img src="${producto.imagen}" alt="${producto.nombre}" style="width:100%; height:140px; object-fit:cover; border-radius:8px; margin-bottom:12px;" onerror="this.src='https://via.placeholder.com/150?text=Comida'">
+            <img src="${producto.imagen}" alt="${producto.nombre}" onerror="this.onerror=null; this.src='https://dummyimage.com/300x200/334155/ffffff&text=Comida';">
             <h3>${producto.nombre}</h3>
             <p class="precio">$${producto.precio.toLocaleString('es-AR')}</p>
             <button class="btn-agregar" onclick="agregarAlCarrito(${producto.id})">Agregar al Carrito</button>
@@ -119,15 +119,15 @@ function renderizarCarrito() {
         const divItem = document.createElement("div");
         divItem.classList.add("item-carrito");
         divItem.innerHTML = `
-            <div class="item-info">
+            <div>
                 <strong>${item.nombre}</strong>
                 <span style="color:#94a3b8; font-size:0.85rem; display:block;">$${item.precio.toLocaleString('es-AR')} c/u</span>
             </div>
-            <div class="item-controles" style="display:flex; align-items:center; gap:8px;">
+            <div style="display:flex; align-items:center; gap:8px;">
                 <button class="btn-qty" onclick="cambiarCantidad(${item.id}, -1)">-</button>
                 <span>${item.cantidad}</span>
                 <button class="btn-qty" onclick="cambiarCantidad(${item.id}, 1)">+</button>
-                <strong style="margin-left:auto;">$${subtotal.toLocaleString('es-AR')}</strong>
+                <strong style="margin-left:8px;">$${subtotal.toLocaleString('es-AR')}</strong>
             </div>
         `;
         listaCarrito.appendChild(divItem);
@@ -138,21 +138,20 @@ function renderizarCarrito() {
     }
 
     const divPago = document.createElement("div");
-    divPago.classList.add("pago-seccion");
+    divPago.style.cssText = "margin-top:15px; padding-top:10px; border-top:1px solid #334155;";
     divPago.innerHTML = `
-        <h4 style="margin: 15px 0 8px 0; color:#cbd5e1;">Medio de Pago:</h4>
-        <label class="pago-opcion" style="display:block; margin-bottom:6px; cursor:pointer;">
+        <h4 style="margin-bottom:8px; color:#cbd5e1;">Medio de Pago:</h4>
+        <label style="display:block; margin-bottom:6px; cursor:pointer;">
             <input type="radio" name="pago" value="Mercado Pago" checked onclick="seleccionarMedioPago('Mercado Pago')"> Mercado Pago / Transferencia
         </label>
-        <label class="pago-opcion" style="display:block; margin-bottom:15px; cursor:pointer;">
-            <input type="radio" name="pago" value="Efectivo" onclick="seleccionarMedioPago('Efectivo')"> Efectivo al retirar/recibir
+        <label style="display:block; margin-bottom:15px; cursor:pointer;">
+            <input type="radio" name="pago" value="Efectivo" onclick="seleccionarMedioPago('Efectivo')"> Efectivo
         </label>
     `;
     listaCarrito.appendChild(divPago);
 
     const btnPagar = document.createElement("button");
-    btnPagar.classList.add("btn-pago");
-    btnPagar.style.cssText = "display:block; width:100%; text-align:center; background:#22c55e; color:white; padding:14px; border-radius:8px; font-weight:bold; font-size:1.1rem; border:none; cursor:pointer; margin-top:10px;";
+    btnPagar.style.cssText = "display:block; width:100%; background:#22c55e; color:white; padding:12px; border-radius:8px; font-weight:bold; font-size:1rem; border:none; cursor:pointer; margin-top:10px;";
     btnPagar.innerText = "PAGAR Y ENVIAR PEDIDO 📲";
     btnPagar.onclick = enviarPedidoWhatsApp;
 
