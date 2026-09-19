@@ -1,4 +1,3 @@
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -14,11 +13,11 @@ body {
 
 header {
     text-align: center;
-    padding: 20px 0 40px;
+    padding: 20px 0 30px;
 }
 
 header h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     color: #38bdf8;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -29,7 +28,7 @@ header h1 {
     margin: 0 auto;
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 30px;
+    gap: 25px;
 }
 
 h2 {
@@ -48,45 +47,43 @@ h2 {
 .producto-card {
     background: #1e293b;
     border-radius: 12px;
-    padding: 20px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s, box-shadow 0.2s;
     border: 1px solid #334155;
 }
 
 .producto-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.2);
+    border-color: #38bdf8;
 }
 
 .producto-card h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
     color: #f1f5f9;
 }
 
 .precio {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: bold;
     color: #4ade80;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
-button {
+.btn-agregar {
     background-color: #0284c7;
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 10px;
     border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
-    transition: background 0.2s;
+    width: 100%;
 }
 
-button:hover {
+.btn-agregar:hover {
     background-color: #0369a1;
 }
 
@@ -102,16 +99,85 @@ button:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
+    padding: 12px 0;
     border-bottom: 1px solid #334155;
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.item-controles {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-qty {
+    background: #334155;
+    color: white;
+    border: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-qty:hover {
+    background: #475569;
+}
+
+.pago-seccion {
+    margin-top: 20px;
+    border-top: 2px solid #334155;
+    padding-top: 15px;
+}
+
+.pago-seccion h4 {
+    margin-bottom: 10px;
+    color: #cbd5e1;
+}
+
+.pago-opcion {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
 }
 
 .total-contenedor {
     margin-top: 20px;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: bold;
     text-align: right;
     color: #4ade80;
+    border-top: 2px solid #334155;
+    padding-top: 15px;
+}
+
+.btn-pago {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #22c55e;
+    color: white;
+    padding: 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 15px;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-pago:hover {
+    background: #16a34a;
 }
 
 @media (max-width: 768px) {
